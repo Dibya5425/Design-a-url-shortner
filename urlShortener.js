@@ -1,10 +1,10 @@
 
 const { MongoClient } = require("mongodb");
 
-const crypto = require("crypto"); // Add this line for importing the 'crypto' module
+const crypto = require("crypto"); 
 
 
-const url = "mongodb+srv://dibya5425:admin@cluster0.0qbmmh0.mongodb.net/"; // Replace with your MongoDB Atlas connection URL
+const url = "mongodb+srv://dibya5425:admin@cluster0.0qbmmh0.mongodb.net/"; 
 const collectionName = "shortened_urls";
 
 let db;
@@ -31,18 +31,18 @@ function generateShortURL(longURL) {
   return shortURL;
 }
 
-// Method 1: Shorten URL
+//  Shorten URL
 async function shortenUrl(destinationUrl) {
   try {
-    // Generate the short URL
+    
     const shortUrl = generateShortURL(destinationUrl);
 
-    // Store the mapping in the database
+    
     await db.insertOne({
       shortUrl: shortUrl,
       destinationUrl: destinationUrl,
       createdAt: new Date(),
-      expiresAt: null, // Set expiration based on the default time span
+      expiresAt: null, 
     });
 
     return shortUrl;
@@ -52,7 +52,7 @@ async function shortenUrl(destinationUrl) {
   }
 }
 
-// Method 2: Update Short URL
+//Update Short URL
 async function updateShortUrl(shortUrl, newDestinationUrl) {
   try {
     
